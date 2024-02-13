@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab01
 {
@@ -29,55 +25,27 @@ namespace Lab01
             }
             else if (Task == 2)
             {
-                int ValueOfArray = 10;
-                int[] ArrayOfX = new int[ValueOfArray]; //ArrayOfX состоит из цифр числа X, записанных начиная с цифры 0-го разряда
-                int[] ArrayOfN = new int[ValueOfArray]; //ArrayOfN состоит из цифр числа N, записанных начиная с цифры 0-го разряда
+                
                 Console.Write("Enter x (x >= 100): ");
-                int X = Convert.ToInt32(Console.ReadLine());
+                string X = Convert.ToString(Console.ReadLine());
 
-                if (X < 100)
+                if (int.Parse(X) < 100)
                 {
                     Console.Write("X is small! \nPlease enter x again (x >= 100): ");
-                    X = Convert.ToInt32(Console.ReadLine());
+                    X = Convert.ToString(Console.ReadLine());
                 }
-                if (X < 100)
+                if (int.Parse(X) < 100)
                 {
                     Console.Write("!!!WARNING!!! x >= 100!!! \nEnter x again: ");
-                    X = Convert.ToInt32(Console.ReadLine());
+                    X = Convert.ToString(Console.ReadLine());
                 }
-                if (X >= 100)
+                if (int.Parse(X) >= 100)
                 {
-                    for (int Index = 0; Index < ValueOfArray; ++Index)
-                    {
-                        if (ValueOfArray < Index)
-                        {
-                            ValueOfArray = Index + 1;
-                        }
-                        ArrayOfX[Index] = X % 10;
-                        X /= 10;
-                    }
-
-                    for (int Index = 0; Index < ValueOfArray - 1; ++Index)
-                    {
-                        if (Index == 0)
-                        {
-                            ArrayOfN[0] = ArrayOfX[ValueOfArray - 1];
-                        }
-                        else if (Index < ValueOfArray - 1)
-                        {
-                            ArrayOfN[Index] = ArrayOfX[Index + 1];
-                        }
-                        else
-                        {
-                            ArrayOfN[Index + 1] = ArrayOfX[ValueOfArray];
-                        }
-                    }
+                    X = X.Remove(1, 1) + X[1];
 
                     Console.Write("n = ");
-                    for (int Index = ValueOfArray - 1; Index > 0; --Index)
-                    {
-                        Console.Write(ArrayOfN[Index]);
-                    }
+                    
+                    Console.Write(X);
                     Console.ReadKey();
                 }
                 else
